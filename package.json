@@ -1,6 +1,6 @@
 {
   "name": "express-superstruct",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An express validation middleware that uses superstruct",
   "main": "index.js",
   "dependencies": {

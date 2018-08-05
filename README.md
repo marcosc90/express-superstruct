@@ -24,8 +24,8 @@ app.post(
 	'/item', 
 	validate({ title: 'string', stock: 'number' }),
 	(req, res, next) => {
-		console.log(req.string); // I'm a string 100%
-		console.log(req.number); // I'm a number 100%
+		console.log(req.body.title); // I'm a string 100%
+		console.log(req.body.stock); // I'm a number 100%
 		res.end('ok');
 	}
 );
@@ -77,7 +77,7 @@ app.post(
 	'/emails', 
 	validate({ emails: ['email'] }, struct),
 	(req, res, next) => {
-		console.log(emails); // I'm an array of emails
+		console.log(req.body.emails); // I'm an array of emails
 		res.end('ok');
 	}
 );
