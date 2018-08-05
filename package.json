@@ -1,0 +1,28 @@
+{
+  "name": "express-superstruct",
+  "version": "1.0.0",
+  "description": "An express validation middleware that uses superstruct",
+  "main": "index.js",
+  "dependencies": {
+    "superstruct": "0.5.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcosc90/express-superstruct.git"
+  },
+  "keywords": [
+    "express",
+    "validator",
+    "superstruct"
+  ],
+  "author": "Marcos Casagrande",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/marcosc90/express-superstruct/issues"
+  },
+  "homepage": "https://github.com/marcosc90/express-superstruct#readme"
+}
