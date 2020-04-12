@@ -1,8 +1,11 @@
 
+
 # express-superstruct
 
 An express validation middleware that uses [superstruct](https://github.com/ianstormtaylor/superstruct)
 
+- Replaces the incoming `req.body`, `req.query`, with the validated result, original values are kept in`req._body`/`req._query`
+- Express error middleware will be executed upon validation error
 ## Install
 
 ```bash
@@ -41,6 +44,7 @@ app.get(
 );
 
 ```
+
 
 ## Advanced usage
 
@@ -95,6 +99,26 @@ app.post(
 	'/user/update', 
 	validate(schema, struct),
 	(req, res, next) => {
+		res.end('ok');
+	}
+);
+
+/* ... */
+```
+**Default** values are supported:
+
+```javascript
+const schema = [{
+	name: 'string & !empty', // !empty may be another custom type!
+	emails: struct.optional(['email']),
+	foo: struct.optional(['string'])
+}, { foo: 'bar' } ];
+
+app.post(
+	'/user/update',
+	validate(schema, struct),
+	(req, res, next) => {
+	    // req.body.foo === 'bar' if foo is not send in the request
 		res.end('ok');
 	}
 );

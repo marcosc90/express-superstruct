@@ -3,21 +3,22 @@
 const { superstruct, struct } = require('superstruct');
 
 // Custom error
-class ValidationError extends Error {}
+class ValidationError extends Error { }
 
 function validate(fields, structure = struct) {
-
-	console.log(structure === struct);
-	const Schema = structure(fields);
+	fields = Array.isArray(fields) ? fields : [fields]
+	const Schema = structure(...fields);
 
 	return (req, res, next) => {
+		const key = Object.keys(req.body || {}).length ? 'body' : 'query'
 
-		const data = Object.keys(req.body || {}).length ? req.body : req.query;
+		const [error, body] = Schema.validate(req[key] || {});
 
-		const [error] = Schema.validate(data || {});
-
-		if(error)
+		if (error)
 			return next(new ValidationError(error.reason || error.message));
+
+		req[`_${key}`] = req.body;
+		req[key] = body;
 
 		return next();
 

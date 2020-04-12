@@ -4,7 +4,7 @@
   "description": "An express validation middleware that uses superstruct",
   "main": "index.js",
   "dependencies": {
-    "superstruct": "0.5.4"
+    "superstruct": "0.8.3"
   },
   "devDependencies": {},
   "scripts": {
