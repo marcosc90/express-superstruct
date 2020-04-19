@@ -17,7 +17,7 @@ function validate(fields, structure = struct) {
 		if (error)
 			return next(new ValidationError(error.reason || error.message));
 
-		req[`_${key}`] = req.body;
+		req[`_${key}`] = req[key];
 		req[key] = body;
 
 		return next();
